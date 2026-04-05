@@ -62,13 +62,13 @@
 ### 📊 GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=velikhanov&show_icons=true&theme=transparent&hide_border=true&title_color=0e75b6&locale=en" alt="GitHub Stats" />
+  <img src="https://github-readme-stats.vercel.app/api?username=velikhanov&amp;show_icons=true&amp;theme=transparent&amp;hide_border=true&amp;title_color=0e75b6&amp;locale=en" alt="GitHub Stats" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=velikhanov&layout=compact&theme=transparent&hide_border=true&title_color=0e75b6&locale=en" alt="Top Languages" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=velikhanov&amp;layout=compact&amp;theme=transparent&amp;hide_border=true&amp;title_color=0e75b6&amp;locale=en" alt="Top Languages" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=velikhanov&theme=transparent&hide_border=true&title_color=0e75b6" alt="GitHub Streak" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=velikhanov&amp;theme=transparent&amp;hide_border=true&amp;title_color=0e75b6" alt="GitHub Streak" />
 </p>
