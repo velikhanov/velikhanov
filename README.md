@@ -63,9 +63,7 @@
 
 <div align="center">
 
-  ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=velikhanov&show_icons=true&theme=transparent&hide_border=true&title_color=0e75b6&locale=en)
-  
-  ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs?username=velikhanov&layout=compact&theme=transparent&hide_border=true&title_color=0e75b6&locale=en)
+  ![GitHub Stats](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=velikhanov&theme=transparent)
   
   ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=velikhanov&theme=transparent&hide_border=true&title_color=0e75b6)
 
