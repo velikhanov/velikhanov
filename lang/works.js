@@ -4,6 +4,7 @@ languative.modifyDictionary("en", {
     status_dev: "In Development",
     work_source: "Source Code",
     work_demo: "Live Demo",
+    work_visit: "Visit Website",
     
     atyrau_name: "Repair Service",
     atyrau_desc: "Modern platform for a repair company featuring dynamic service management and a streamlined client request system.",
@@ -27,7 +28,10 @@ languative.modifyDictionary("en", {
     utilities_desc: "Financial tracking bot for automating income/expense reports and utility service monitoring.",
     
     teacher_name: "Grammar Tools",
-    teacher_desc: "Linguistic analysis tool specializing in Russian morpheme parsing and grammatical text structure."
+    teacher_desc: "Linguistic analysis tool specializing in Russian morpheme parsing and grammatical text structure.",
+    
+    texttotest_name: "TextToTest",
+    texttotest_desc: "Django-based SaaS learning platform that turns study materials into interactive quizzes with AI for Web and Telegram."
 });
 languative.modifyDictionary("az", {
     Title: "İşlərim",
@@ -35,6 +39,7 @@ languative.modifyDictionary("az", {
     status_dev: "İnkişafda",
     work_source: "Mənbə kodu",
     work_demo: "Canlı Demo",
+    work_visit: "Sayta Keçid",
     
     atyrau_name: "Təmir Xidməti",
     atyrau_desc: "Dinamik xidmət idarəetməsi və müştəri müraciətlərinin işlənməsi sisteminə malik təmir şirkəti platforması.",
@@ -58,7 +63,10 @@ languative.modifyDictionary("az", {
     utilities_desc: "Gəlir/xərc hesabatlarını və kommunal xidmətlərin monitorinqini avtomatlaşdıran maliyyə izləmə botu.",
     
     teacher_name: "Qrammatika Alətləri",
-    teacher_desc: "Rus dili morfemi və qrammatik mətn strukturunun təhlili üzrə ixtisaslaşmış linqvistik alət."
+    teacher_desc: "Rus dili morfemi və qrammatik mətn strukturunun təhlili üzrə ixtisaslaşmış linqvistik alət.",
+    
+    texttotest_name: "TextToTest",
+    texttotest_desc: "Tədris materiallarını Veb və Telegram üçün süni intellektlə interaktiv sorğulara çevirən Django əsaslı SaaS platforması."
 });
 languative.modifyDictionary("ru", {
     Title: "Мои Работы",
@@ -66,6 +74,7 @@ languative.modifyDictionary("ru", {
     status_dev: "В разработке",
     work_source: "Исходный код",
     work_demo: "Демо",
+    work_visit: "Посетить сайт",
     
     atyrau_name: "Ремонтный Сервис",
     atyrau_desc: "Платформа ремонтной компании с динамическим управлением услугами и системой обработки заявок клиентов.",
@@ -89,5 +98,8 @@ languative.modifyDictionary("ru", {
     utilities_desc: "Бот для автоматизации отчетов о доходах/расходах и мониторинга коммунальных служб.",
     
     teacher_name: "Инструменты Грамматики",
-    teacher_desc: "Инструмент лингвистического анализа морфемного состава и грамматической структуры русского языка."
+    teacher_desc: "Инструмент лингвистического анализа морфемного состава и грамматической структуры русского языка.",
+    
+    texttotest_name: "TextToTest",
+    texttotest_desc: "SaaS-платформа на Django, превращающая учебные материалы в интерактивные квизы с помощью ИИ для Web и Telegram."
 });

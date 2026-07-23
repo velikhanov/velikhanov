@@ -704,4 +704,5 @@ footer {
   .section-title { font-size: 2rem; }
   .info-sections { grid-template-columns: 1fr; gap: 1.5rem; }
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .hide-on-mobile { display: none !important; }
 }
