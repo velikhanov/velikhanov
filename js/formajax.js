@@ -44,7 +44,7 @@
             isValid = value.length >= 5 && value.length <= 50 && /\S+@\S+\.\S+/.test(value);
         } else {
             // General sanitization for other fields
-            value = value.replace(/[^\u0400-\u04FF\u00C7\u018F\u011E\u04D9\u0049\u0130\u00D6\u015E\u00DC\u00E7\u01DD\u0259\u04D8\u04D9\u1D4A\u2094\u011F\u0131\u0069\u00F6\u015F\u00FC\w@.?()+"\/,:;*%!№$#=-]+/gi, "").replace(/\s+/g, " ");
+            value = value.replace(/[^\s\u0400-\u04FF\u00C7\u018F\u011E\u04D9\u0049\u0130\u00D6\u015E\u00DC\u00E7\u01DD\u0259\u04D8\u04D9\u1D4A\u2094\u011F\u0131\u0069\u00F6\u015F\u00FC\w@.?()+"\/,:;*%!№$#=-]+/gi, "").replace(/\s+/g, " ");
             if (name === 'message') isValid = value.length >= 1;
             else isValid = value.length >= 1 && value.length <= 50;
         }
