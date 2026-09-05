@@ -36,27 +36,24 @@
         const name = input.getAttribute('name');
         if (name === 'website') return true; // Skip honeypot field
 
-        let value = input.value;
+        const value = input.value.trim();
         let isValid = true;
 
         if (name === 'email') {
-            value = value.replace(/[^\w@._]+/g, "").replace(/\s+/g, "");
-            isValid = value.length >= 5 && value.length <= 50 && /\S+@\S+\.\S+/.test(value);
+            isValid = value.length >= 5 && value.length <= 80 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        } else if (name === 'message') {
+            isValid = value.length >= 2;
         } else {
-            // General sanitization for other fields
-            value = value.replace(/[^\s\u0400-\u04FF\u00C7\u018F\u011E\u04D9\u0049\u0130\u00D6\u015E\u00DC\u00E7\u01DD\u0259\u04D8\u04D9\u1D4A\u2094\u011F\u0131\u0069\u00F6\u015F\u00FC\w@.?()+"\/,:;*%!№$#=-]+/gi, "").replace(/\s+/g, " ");
-            if (name === 'message') isValid = value.length >= 1;
-            else isValid = value.length >= 1 && value.length <= 50;
+            isValid = value.length >= 1 && value.length <= 100;
         }
 
-        input.value = value;
         if (!isValid) input.classList.add("error");
         else input.classList.remove("error");
         return isValid;
     };
 
     // Live validation (Skip honeypot)
-    form.querySelectorAll('input:not([name="website"])').forEach(input => {
+    form.querySelectorAll('input:not([name="website"]), textarea').forEach(input => {
         input.addEventListener('input', () => validateInput(input));
     });
 
@@ -85,7 +82,7 @@
         
         let isFormValid = true;
         // Validate actual inputs only
-        form.querySelectorAll('input:not([name="website"])').forEach(input => {
+        form.querySelectorAll('input:not([name="website"]), textarea').forEach(input => {
             if (!validateInput(input)) isFormValid = false;
         });
 
@@ -103,10 +100,10 @@
         emailjs.init({publicKey: "_GCxj9wp4lONoUvJG"});
 
         const formData = {
-            name: form.querySelector("input[name=name]").value,
-            email: form.querySelector("input[name=email]").value,
-            subject: form.querySelector("input[name=subject]").value,
-            message: form.querySelector("input[name=message]").value
+            name: (form.querySelector("input[name=name]")?.value || "").trim(),
+            email: (form.querySelector("input[name=email]")?.value || "").trim(),
+            subject: (form.querySelector("input[name=subject]")?.value || "").trim(),
+            message: (form.querySelector("[name=message]")?.value || "").trim()
         };    
 
         emailjs.send("service_mmm1wzr", "template_04r4zio", formData)

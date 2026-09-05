@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const cleanHref = href.replace('.php', '').replace('.html', '').replace(/\/$/, '');
             const cleanPath = path.replace('.php', '').replace('.html', '').replace(/\/$/, '');
             
-            if (cleanPath === cleanHref || cleanPath.endsWith(cleanHref)) {
+            if (cleanHref && (cleanPath === cleanHref || cleanPath.endsWith(cleanHref))) {
                 link.classList.add('active');
             }
         }
@@ -180,9 +180,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Typewriter
     const nameElement = document.getElementById('typewriter-name');
     const subtitleElement = document.querySelector('.hero-subtitle');
+    let subTimer = null;
+    let nameTimer = null;
     
     function typeSubtitle() {
         if (!subtitleElement) return;
+        if (subTimer) clearInterval(subTimer);
         const subText = (typeof languative !== 'undefined' && languative.getPhrase)
             ? languative.getPhrase('hero_subtitle')
             : 'Backend engineer specializing in AI implementation, NLP, and high-performance systems with Python and Golang.';
@@ -190,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         subtitleElement.style.opacity = '1';
         subtitleElement.style.visibility = 'visible';
         let subIndex = 0;
-        const subTimer = setInterval(() => {
+        subTimer = setInterval(() => {
             if (subIndex <= subText.length) {
                 const typed = subText.slice(0, subIndex);
                 const remaining = subText.slice(subIndex);
@@ -199,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 subIndex++;
             } else {
                 clearInterval(subTimer);
+                subTimer = null;
                 subtitleElement.innerHTML = subText;
             }
         }, 20);
@@ -206,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startTypewriter() {
         if (!nameElement || !subtitleElement) return;
+        if (nameTimer) clearInterval(nameTimer);
 
         const nameText = (typeof languative !== 'undefined' && languative.getPhrase) 
             ? languative.getPhrase('myname') 
@@ -224,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitleElement.style.opacity = '0';
             subtitleElement.style.visibility = 'hidden';
             let charIndex = 0;
-            const nameTimer = setInterval(() => {
+            nameTimer = setInterval(() => {
                 if (charIndex <= displayName.length) {
                     let typedHTML = '';
                     const spaceIndex = displayName.lastIndexOf(' ');
@@ -245,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     charIndex++;
                 } else {
                     clearInterval(nameTimer);
+                    nameTimer = null;
                     nameElement.innerHTML = nameFullHTML;
                     sessionStorage.setItem('boot', '1');
                     typeSubtitle();
