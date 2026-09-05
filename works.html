@@ -3,32 +3,23 @@
   <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Velikhanov Teymur - AI & Backend Developer, PhD Researcher. Specializing in Python, Go, NLP, Deep Learning, and high-performance backend systems.">
+<meta name="description" content="Portfolio of projects by Velikhanov Teymur - web platforms and backend systems built with Python and Golang, featuring AI and NLP integrations.">
 <meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://cs.velikhanov.com/works">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Velikhanov Teymur | AI & Backend Developer">
-<meta property="og:description" content="AI & Backend Developer specializing in Python, Go, NLP, and high-performance distributed systems.">
-<meta property="og:image" content="img/about/me.jpg">
+<meta property="og:url" content="https://cs.velikhanov.com/works">
+<meta property="og:title" content="Works | Velikhanov Teymur">
+<meta property="og:description" content="A selection of web platforms and backend systems built with Python and Golang, featuring AI and NLP integrations.">
+<meta property="og:image" content="https://cs.velikhanov.com/img/about/me.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Works | Velikhanov Teymur">
+<meta name="twitter:description" content="A selection of web platforms and backend systems built with Python and Golang, featuring AI and NLP integrations.">
+<meta name="twitter:image" content="https://cs.velikhanov.com/img/about/me.jpg">
 <link rel="shortcut icon" href="img/t.png" type="image/x-icon">
 <link rel="stylesheet" href="css/all.min.css">
 <link rel="stylesheet" href="css/devicons.min.css">
 <link rel="stylesheet" href="css/global.css">
 <script src="js/scripts.js"></script>
-<script src="js/languative.js"></script>
-<script>
-  (function() {
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang && typeof languative !== 'undefined') {
-      document.addEventListener('DOMContentLoaded', () => {
-        // Small delay to ensure deferred lang/works.js etc have run
-        setTimeout(() => {
-          languative.changeLanguage(savedLang);
-        }, 80);
-      });
-    }
-  })();
-</script>
 <script src="js/lightning.js" defer></script>    <title>Works | Velikhanov Teymur</title>
   </head>
   <body>
@@ -46,21 +37,15 @@
 		</button>
 
 		<div class="nav-links">
-			<a href="/about" data-phrase-id="nav_about">About</a>
-			<a href="/skills" data-phrase-id="nav_skills">Skills</a>
-			<a href="/works" data-phrase-id="nav_works">Works</a>
-			<a href="/contact" data-phrase-id="nav_contact">Contact</a>
+			<a href="/about">About</a>
+			<a href="/skills">Skills</a>
+			<a href="/works">Works</a>
+			<a href="/contact">Contact</a>
 			
-			<div class="theme-lang-controls">
+			<div class="theme-controls">
 				<button id="theme-toggle" class="control-btn" aria-label="Toggle Dark Mode">
 					<i class="fa-solid fa-moon"></i>
 				</button>
-				
-				<div class="lang-selector">
-					<button data-lang="en" class="lang-btn"><img src="/img/lang/en.png" alt="EN"></button>
-					<button data-lang="az" class="lang-btn"><img src="/img/lang/az.png" alt="AZ"></button>
-					<button data-lang="ru" class="lang-btn"><img src="/img/lang/ru.png" alt="RU"></button>
-				</div>
 			</div>
 		</div>
 	</nav>
@@ -68,20 +53,20 @@
 
 <canvas id="canvas"></canvas>    
     <main class="container mt-4">
-      <h1 class="hero-title fade-in" data-phrase-id="Title">My Works</h1>
+      <h1 class="hero-title fade-in">My Works</h1>
       
       <div class="works-grid fade-in">
         <!-- 01 TextToTest -->
         <div class="work-card">
           <span class="project-index">01</span>
           <span class="project-label">SaaS::Platform</span>
-          <h2 class="project-title" data-phrase-id="texttotest_name">TextToTest</h2>
-          <div class="project-status" data-phrase-id="status_op">Live</div>
-          <p class="project-description" data-phrase-id="texttotest_desc">
+          <h2 class="project-title">TextToTest</h2>
+          <div class="project-status">Live</div>
+          <p class="project-description">
             Django-based SaaS learning platform that turns study materials into interactive quizzes with AI for Web and Telegram.
           </p>
           <div class="project-actions">
-            <a href="https://texttotest.com" target="_blank" rel="noopener noreferrer" class="project-link" data-phrase-id="work_visit">Visit Website</a>
+            <a href="https://texttotest.com" target="_blank" rel="noopener noreferrer" class="project-link">Visit Website</a>
           </div>
           <div class="work-tech">
             <i class="devicon-python-plain colored"></i>
@@ -95,13 +80,13 @@
         <div class="work-card">
           <span class="project-index">02</span>
           <span class="project-label">AI::LLM Implementation</span>
-          <h2 class="project-title" data-phrase-id="medquiz_name">Med Quiz AI</h2>
-          <div class="project-status" data-phrase-id="status_op">Live</div>
-          <p class="project-description" data-phrase-id="medquiz_desc">
+          <h2 class="project-title">Med Quiz AI</h2>
+          <div class="project-status">Live</div>
+          <p class="project-description">
             LLM-powered engine that parses medical texts into interactive Telegram polls for student self-assessment.
           </p>
           <div class="project-actions">
-            <a href="https://github.com/velikhanov/med_quiz" target="_blank" rel="noopener noreferrer" class="project-link" data-phrase-id="work_source">Source Code</a>
+            <a href="https://github.com/velikhanov/med_quiz" target="_blank" rel="noopener noreferrer" class="project-link">Source Code</a>
           </div>
           <div class="work-tech">
             <i class="devicon-python-plain colored"></i>
@@ -114,13 +99,13 @@
         <div class="work-card">
           <span class="project-index">03</span>
           <span class="project-label">Logic::Linguistics</span>
-          <h2 class="project-title" data-phrase-id="teacher_name">Grammar Tools</h2>
-          <div class="project-status development" data-phrase-id="status_dev">In Development</div>
-          <p class="project-description" data-phrase-id="teacher_desc">
+          <h2 class="project-title">Grammar Tools</h2>
+          <div class="project-status development">In Development</div>
+          <p class="project-description">
             Linguistic analysis tool specializing in Russian morpheme parsing and grammatical text structure.
           </p>
           <div class="project-actions">
-            <a href="https://github.com/velikhanov/teacher_tools" target="_blank" rel="noopener noreferrer" class="project-link" data-phrase-id="work_source">Source Code</a>
+            <a href="https://github.com/velikhanov/teacher_tools" target="_blank" rel="noopener noreferrer" class="project-link">Source Code</a>
           </div>
           <div class="work-tech">
             <i class="devicon-python-plain colored"></i>
@@ -132,13 +117,13 @@
         <div class="work-card">
           <span class="project-index">04</span>
           <span class="project-label">Core::Business Logic</span>
-          <h2 class="project-title" data-phrase-id="comfort_name">E-Commerce Core</h2>
-          <div class="project-status" data-phrase-id="status_op">Live</div>
-          <p class="project-description" data-phrase-id="comfort_desc">
+          <h2 class="project-title">E-Commerce Core</h2>
+          <div class="project-status">Live</div>
+          <p class="project-description">
             Full-scale online shop engine with inventory management, cart logic, and secure checkout processing.
           </p>
           <div class="project-actions">
-            <a href="https://github.com/velikhanov/e-commerce" target="_blank" rel="noopener noreferrer" class="project-link" data-phrase-id="work_source">Source Code</a>
+            <a href="https://github.com/velikhanov/e-commerce" target="_blank" rel="noopener noreferrer" class="project-link">Source Code</a>
           </div>
           <div class="work-tech">
             <i class="fab fa-laravel colored"></i>
@@ -151,13 +136,13 @@
         <div class="work-card">
           <span class="project-index">05</span>
           <span class="project-label">Bot::Automation</span>
-          <h2 class="project-title" data-phrase-id="utilities_name">Utilities Bot</h2>
-          <div class="project-status" data-phrase-id="status_op">Live</div>
-          <p class="project-description" data-phrase-id="utilities_desc">
+          <h2 class="project-title">Utilities Bot</h2>
+          <div class="project-status">Live</div>
+          <p class="project-description">
             Financial tracking bot for automating income/expense reports and utility service monitoring.
           </p>
           <div class="project-actions">
-            <a href="https://github.com/velikhanov/utilities_bot" target="_blank" rel="noopener noreferrer" class="project-link" data-phrase-id="work_source">Source Code</a>
+            <a href="https://github.com/velikhanov/utilities_bot" target="_blank" rel="noopener noreferrer" class="project-link">Source Code</a>
           </div>
           <div class="work-tech">
             <i class="devicon-python-plain colored"></i>
@@ -169,13 +154,13 @@
         <div class="work-card">
           <span class="project-index">06</span>
           <span class="project-label">System::Publishing</span>
-          <h2 class="project-title" data-phrase-id="blog_name">Blog Engine</h2>
-          <div class="project-status" data-phrase-id="status_op">Live</div>
-          <p class="project-description" data-phrase-id="blog_desc">
+          <h2 class="project-title">Blog Engine</h2>
+          <div class="project-status">Live</div>
+          <p class="project-description">
             High-performance publishing platform with markdown support and optimized database indexing.
           </p>
           <div class="project-actions">
-            <a href="https://github.com/velikhanov/blog" target="_blank" rel="noopener noreferrer" class="project-link" data-phrase-id="work_source">Source Code</a>
+            <a href="https://github.com/velikhanov/blog" target="_blank" rel="noopener noreferrer" class="project-link">Source Code</a>
           </div>
           <div class="work-tech">
             <i class="fab fa-laravel colored"></i>
@@ -187,13 +172,13 @@
         <div class="work-card">
           <span class="project-index">07</span>
           <span class="project-label">Service::Microservice</span>
-          <h2 class="project-title" data-phrase-id="url_name">URL Simplifier</h2>
-          <div class="project-status" data-phrase-id="status_op">Live</div>
-          <p class="project-description" data-phrase-id="url_desc">
+          <h2 class="project-title">URL Simplifier</h2>
+          <div class="project-status">Live</div>
+          <p class="project-description">
             Lightweight microservice for link redirection with built-in analytics and custom alias support.
           </p>
           <div class="project-actions">
-            <a href="https://github.com/velikhanov/url_simplifier" target="_blank" rel="noopener noreferrer" class="project-link" data-phrase-id="work_source">Source Code</a>
+            <a href="https://github.com/velikhanov/url_simplifier" target="_blank" rel="noopener noreferrer" class="project-link">Source Code</a>
           </div>
           <div class="work-tech">
             <i class="devicon-python-plain colored"></i>
@@ -205,13 +190,13 @@
         <div class="work-card">
           <span class="project-index">08</span>
           <span class="project-label">Service::Infrastructure</span>
-          <h2 class="project-title" data-phrase-id="atyrau_name">Repair Service</h2>
-          <div class="project-status" data-phrase-id="status_op">Live</div>
-          <p class="project-description" data-phrase-id="atyrau_desc">
+          <h2 class="project-title">Repair Service</h2>
+          <div class="project-status">Live</div>
+          <p class="project-description">
             Modern platform for a repair company featuring dynamic service management and a streamlined client request system.
           </p>
           <div class="project-actions">
-            <a href="https://github.com/velikhanov/construct_company_website" target="_blank" rel="noopener noreferrer" class="project-link" data-phrase-id="work_source">Source Code</a>
+            <a href="https://github.com/velikhanov/construct_company_website" target="_blank" rel="noopener noreferrer" class="project-link">Source Code</a>
           </div>
           <div class="work-tech">
             <i class="fab fa-php colored"></i>
@@ -224,13 +209,13 @@
         <div class="work-card">
           <span class="project-index">09</span>
           <span class="project-label">Web::Showcase</span>
-          <h2 class="project-title" data-phrase-id="nuray_name">Nuray House</h2>
-          <div class="project-status" data-phrase-id="status_op">Live</div>
-          <p class="project-description" data-phrase-id="nuray_desc">
+          <h2 class="project-title">Nuray House</h2>
+          <div class="project-status">Live</div>
+          <p class="project-description">
             Professional construction company website showcasing architectural projects and a comprehensive real estate catalog.
           </p>
           <div class="project-actions">
-            <a href="https://github.com/velikhanov/NurayHouse" target="_blank" rel="noopener noreferrer" class="project-link" data-phrase-id="work_source">Source Code</a>
+            <a href="https://github.com/velikhanov/NurayHouse" target="_blank" rel="noopener noreferrer" class="project-link">Source Code</a>
           </div>
           <div class="work-tech">
             <i class="fab fa-php colored"></i>
@@ -242,14 +227,12 @@
     </main>
 
     <footer>
-      <p data-phrase-id="footer_text">Built by Teymur with clean code.</p>
+      <p>Built by Teymur with clean code.</p>
       <div class="footer-socials">
         <a href="https://github.com/velikhanov" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/velikhanov/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </footer>
 
-    <script src="lang/main.js" defer></script>
-    <script src="lang/works.js" defer></script>
   </body>
 </html>

@@ -3,32 +3,23 @@
   <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Velikhanov Teymur - AI & Backend Developer, PhD Researcher. Specializing in Python, Go, NLP, Deep Learning, and high-performance backend systems.">
+<meta name="description" content="Velikhanov Teymur - AI &amp; Backend Developer, PhD Researcher. Specializing in Python, Go, NLP, Deep Learning, and high-performance backend systems.">
 <meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://cs.velikhanov.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Velikhanov Teymur | AI & Backend Developer">
-<meta property="og:description" content="AI & Backend Developer specializing in Python, Go, NLP, and high-performance distributed systems.">
-<meta property="og:image" content="img/about/me.jpg">
+<meta property="og:url" content="https://cs.velikhanov.com/">
+<meta property="og:title" content="Velikhanov Teymur | AI &amp; Backend Developer">
+<meta property="og:description" content="AI &amp; Backend Developer specializing in Python, Go, NLP, and high-performance distributed systems.">
+<meta property="og:image" content="https://cs.velikhanov.com/img/about/me.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Velikhanov Teymur | AI &amp; Backend Developer">
+<meta name="twitter:description" content="AI &amp; Backend Developer specializing in Python, Go, NLP, and high-performance distributed systems.">
+<meta name="twitter:image" content="https://cs.velikhanov.com/img/about/me.jpg">
 <link rel="shortcut icon" href="img/t.png" type="image/x-icon">
 <link rel="stylesheet" href="css/all.min.css">
 <link rel="stylesheet" href="css/devicons.min.css">
 <link rel="stylesheet" href="css/global.css">
 <script src="js/scripts.js"></script>
-<script src="js/languative.js"></script>
-<script>
-  (function() {
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang && typeof languative !== 'undefined') {
-      document.addEventListener('DOMContentLoaded', () => {
-        // Small delay to ensure deferred lang/works.js etc have run
-        setTimeout(() => {
-          languative.changeLanguage(savedLang);
-        }, 80);
-      });
-    }
-  })();
-</script>
 <script src="js/lightning.js" defer></script>    <title>Velikhanov Teymur | AI & Backend Developer</title>
   </head>
   <body>
@@ -46,21 +37,15 @@
 		</button>
 
 		<div class="nav-links">
-			<a href="/about" data-phrase-id="nav_about">About</a>
-			<a href="/skills" data-phrase-id="nav_skills">Skills</a>
-			<a href="/works" data-phrase-id="nav_works">Works</a>
-			<a href="/contact" data-phrase-id="nav_contact">Contact</a>
+			<a href="/about">About</a>
+			<a href="/skills">Skills</a>
+			<a href="/works">Works</a>
+			<a href="/contact">Contact</a>
 			
-			<div class="theme-lang-controls">
+			<div class="theme-controls">
 				<button id="theme-toggle" class="control-btn" aria-label="Toggle Dark Mode">
 					<i class="fa-solid fa-moon"></i>
 				</button>
-				
-				<div class="lang-selector">
-					<button data-lang="en" class="lang-btn"><img src="/img/lang/en.png" alt="EN"></button>
-					<button data-lang="az" class="lang-btn"><img src="/img/lang/az.png" alt="AZ"></button>
-					<button data-lang="ru" class="lang-btn"><img src="/img/lang/ru.png" alt="RU"></button>
-				</div>
 			</div>
 		</div>
 	</nav>
@@ -76,21 +61,33 @@
         <p class="hero-subtitle text-secondary fade-in"></p>
 
         <div class="hero-actions fade-in">
-          <a href="/works" class="btn btn-primary" data-phrase-id="view_works">View Works</a>
-          <a href="/contact" class="btn btn-outline" data-phrase-id="get_in_touch">Get in Touch</a>
+          <a href="/works" class="btn btn-primary">View Works</a>
+          <a href="/contact" class="btn btn-outline">Get in Touch</a>
         </div>
       </section>
     </main>
 
     <footer>
-      <p data-phrase-id="footer_text">Built by Teymur with clean code.</p>
+      <p>Built by Teymur with clean code.</p>
       <div class="footer-socials">
         <a href="https://github.com/velikhanov" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/velikhanov/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </footer>
 
-    <script src="lang/main.js" defer></script>
-    <script src="lang/index.js" defer></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Velikhanov Teymur",
+      "jobTitle": "AI & Backend Developer",
+      "url": "https://cs.velikhanov.com/",
+      "image": "https://cs.velikhanov.com/img/about/me.jpg",
+      "sameAs": [
+        "https://github.com/velikhanov",
+        "https://www.linkedin.com/in/velikhanov/"
+      ]
+    }
+    </script>
   </body>
 </html>

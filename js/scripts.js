@@ -8,9 +8,18 @@ function setTheme(theme) {
     }
 }
 
+// "About me" paragraph, with age/experience filled in dynamically below.
+const ABOUT_ME_MAIN = [
+    "I am a ",
+    "",
+    "-year-old AI & Backend Developer. My commercial experience is ",
+    "",
+    ". I specialize in building robust backend systems with Python and Golang, while focusing on AI implementation, NLP, and Deep Learning to create intelligent, high-performance applications. I am proficient in modern AI frameworks and database management with SQL and NoSQL solutions."
+];
+
 function calculateDynamicStats() {
     const today = new Date();
-    
+
     // 1. Calculate Age (Born 1999-02-15)
     const birthDate = new Date(1999, 1, 15);
     let targetAge = today.getFullYear() - birthDate.getFullYear();
@@ -25,35 +34,21 @@ function calculateDynamicStats() {
     if (today.getMonth() < startDate.getMonth()) {
         expYears--;
     }
-    
-    // 3. Update dictionaries
-    if (typeof languative !== 'undefined' && languative.dictionaries) {
-        Object.keys(languative.dictionaries).forEach(lang => {
-            const dict = languative.dictionaries[lang];
-            if (dict.aboutMe_main && Array.isArray(dict.aboutMe_main)) {
-                dict.aboutMe_main[1] = targetAge.toString();
-                dict.aboutMe_main[3] = expYears >= 5 ? expYears.toString() + "+" : expYears.toString();
-            }
-        });
-    }
 
     const isAnimated = sessionStorage.getItem('statsAnimated');
 
-    // 4. Render
+    // 3. Render
     const aboutText = document.getElementById('about-main-text');
-    if (aboutText && typeof languative !== 'undefined') {
-        const phrase = languative.getPhrase('aboutMe_main');
-        if (Array.isArray(phrase) && phrase.length >= 5) {
-            aboutText.innerHTML = phrase[0] + 
-                                 `<span id="my-age">${isAnimated ? targetAge : '0'}</span>` + 
-                                 phrase[2] + 
-                                 `<span id="my-exp" class="text-accent">${isAnimated ? expYears + '+' : '0'}</span>` + 
-                                 phrase[4];
-            // Trigger local fade-in
-            aboutText.classList.remove('fade-in-text');
-            void aboutText.offsetWidth; 
-            aboutText.classList.add('fade-in-text');
-        }
+    if (aboutText) {
+        aboutText.innerHTML = ABOUT_ME_MAIN[0] +
+                             `<span id="my-age">${isAnimated ? targetAge : '0'}</span>` +
+                             ABOUT_ME_MAIN[2] +
+                             `<span id="my-exp" class="text-accent">${isAnimated ? expYears + '+' : '0'}</span>` +
+                             ABOUT_ME_MAIN[4];
+        // Trigger local fade-in
+        aboutText.classList.remove('fade-in-text');
+        void aboutText.offsetWidth;
+        aboutText.classList.add('fade-in-text');
     }
 
     const ageElement = document.getElementById('my-age');
@@ -136,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (href) {
             const cleanHref = href.replace('.php', '').replace('.html', '').replace(/\/$/, '');
             const cleanPath = path.replace('.php', '').replace('.html', '').replace(/\/$/, '');
-            
+
             if (cleanHref && (cleanPath === cleanHref || cleanPath.endsWith(cleanHref))) {
                 link.classList.add('active');
             }
@@ -182,14 +177,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const subtitleElement = document.querySelector('.hero-subtitle');
     let subTimer = null;
     let nameTimer = null;
-    
+    const HERO_NAME = 'Velikhanov Teymur';
+    const HERO_SUBTITLE = 'Backend engineer specializing in AI implementation, NLP, and high-performance systems with Python and Golang.';
+
     function typeSubtitle() {
         if (!subtitleElement) return;
         if (subTimer) clearInterval(subTimer);
-        const subText = (typeof languative !== 'undefined' && languative.getPhrase)
-            ? languative.getPhrase('hero_subtitle')
-            : 'Backend engineer specializing in AI implementation, NLP, and high-performance systems with Python and Golang.';
-        
+        const subText = HERO_SUBTITLE;
+
         subtitleElement.style.opacity = '1';
         subtitleElement.style.visibility = 'visible';
         let subIndex = 0;
@@ -212,11 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!nameElement || !subtitleElement) return;
         if (nameTimer) clearInterval(nameTimer);
 
-        const nameText = (typeof languative !== 'undefined' && languative.getPhrase) 
-            ? languative.getPhrase('myname') 
-            : 'Velikhanov Teymur';
-        
-        const displayName = (!nameText || nameText === 'myname') ? 'Velikhanov Teymur' : nameText;
+        const displayName = HERO_NAME;
         const nameParts = displayName.split(' ');
         const lastName = nameParts[nameParts.length - 1];
         const firstName = nameParts.slice(0, -1).join(' ');
@@ -233,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (charIndex <= displayName.length) {
                     let typedHTML = '';
                     const spaceIndex = displayName.lastIndexOf(' ');
-                    
+
                     if (charIndex <= spaceIndex) {
                         const typed = displayName.slice(0, charIndex);
                         const remainingFirst = displayName.slice(charIndex, spaceIndex);
@@ -245,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Cursor placed BEFORE the hidden ghost text
                         typedHTML = `${firstName}<br><span class="text-accent">${typedLast}<span class="typewriter-cursor">|</span><span style="visibility:hidden">${remainingLast}</span></span>`;
                     }
-                    
+
                     nameElement.innerHTML = typedHTML;
                     charIndex++;
                 } else {
@@ -260,40 +251,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setTimeout(() => { if (nameElement) startTypewriter(); }, 150);
-
-    // 7. Lang change
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-lang');
-            if (lang && typeof languative !== 'undefined') {
-                languative.changeLanguage(lang);
-                localStorage.setItem('lang', lang);
-                document.documentElement.setAttribute('lang', lang);
-
-                // 1. Update Name Translation
-                if (nameElement) {
-                    const newName = languative.getPhrase('myname');
-                    const parts = newName.split(' ');
-                    nameElement.innerHTML = `${parts.slice(0, -1).join(' ')}<br><span class="text-accent">${parts[parts.length - 1]}</span>`;
-                }
-
-                // 2. Animate all translated blocks
-                document.querySelectorAll('[data-phrase-id], #about-main-text, #typewriter-name').forEach(el => {
-                    el.classList.remove('fade-in-text');
-                    void el.offsetWidth; // Trigger reflow
-                    el.classList.add('fade-in-text');
-                });
-
-                typeSubtitle();
-                calculateDynamicStats();
-            }
-        });
-    });
-
-    // 8. Apply saved language on load
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang && typeof languative !== 'undefined') {
-        languative.changeLanguage(savedLang);
-        document.documentElement.setAttribute('lang', savedLang);
-    }
-    });
+});
