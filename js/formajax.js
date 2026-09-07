@@ -5,32 +5,14 @@
     const form = document.getElementById("contact_form");
     if (!form) return;
 
-    // Helper: Get localized message
-    const getMessage = (key) => {
-        const lang = localStorage.getItem("lang") || window.navigator.language;
-        const messages = {
-            en: {
-                success: "The request has been successfully sent!",
-                error: "An error occurred. Please try again later!",
-                invalid: "Check the correctness of the data you entered!",
-                sending: "Sending..."
-            },
-            az: {
-                success: "Müraciət uğurla göndərildi!",
-                error: "Xəta baş verdi. Zəhmət olmasa bir az sonra yenə cəhd edin!",
-                invalid: "Daxil etdiyiniz məlumatların düzgünlüyünü yoxlayın!",
-                sending: "Göndərilir..."
-            },
-            ru: {
-                success: "Заявка успешно отправлена!",
-                error: "Произошла ошибка. Пожалуйста, повторите попытку позже!",
-                invalid: "Проверьте корректность введенных вами данных!",
-                sending: "Отправка..."
-            }
-        };
-        const l = lang.startsWith("az") ? "az" : lang.startsWith("ru") ? "ru" : "en";
-        return messages[l][key];
+    // Helper: Get toast message
+    const MESSAGES = {
+        success: "The request has been successfully sent!",
+        error: "An error occurred. Please try again later!",
+        invalid: "Check the correctness of the data you entered!",
+        sending: "Sending..."
     };
+    const getMessage = (key) => MESSAGES[key];
 
     const validateInput = (input) => {
         const name = input.getAttribute('name');
