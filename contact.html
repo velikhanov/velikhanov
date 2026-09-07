@@ -22,6 +22,7 @@
 <script src="js/scripts.js?v=1788646441"></script>
 <script src="js/lightning.js?v=1775322804" defer></script>    <meta name="format-detection" content="telephone=no">
     <title>Contact | Velikhanov Teymur</title>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
   <body>
     <header class="main-header">
@@ -87,7 +88,7 @@
             <input type="email" name="email" class="form-control" placeholder="Email" autocomplete="email" required>
           </div>
           <div class="form-group">
-            <input type="text" name="subject" class="form-control" placeholder="Subject" autocomplete="off" required>
+            <input type="text" name="subject" class="form-control" placeholder="Subject (optional)" autocomplete="off">
           </div>
           <div class="form-group">
             <input type="text" name="message" class="form-control" placeholder="Message" autocomplete="off" required>
@@ -96,6 +97,10 @@
           <div class="form-group visually-hidden">
             <input type="text" name="website" id="website_hp" tabindex="-1" autocomplete="off">
           </div>
+
+          <input type="hidden" id="started_at">
+
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEr6-rXOIs_2VXPY"></div>
           
           <button type="submit" class="btn btn-primary submit-btn">
             <span class="btn-send-text">Send Message</span>
@@ -114,7 +119,6 @@
       </div>
     </footer>
 
-    <script src="js/email.min.js?v=1775307131" defer></script>
-    <script src="js/formajax.js?v=1788809331" defer></script>
+    <script src="js/form.js?v=1788810852" defer></script>
   </body>
 </html>

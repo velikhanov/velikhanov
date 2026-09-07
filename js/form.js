@@ -5,18 +5,21 @@
     const form = document.getElementById("contact_form");
     if (!form) return;
 
-    // Helper: Get toast message
+    const startedAtInput = document.getElementById("started_at");
+    if (startedAtInput) startedAtInput.value = Date.now();
+
     const MESSAGES = {
         success: "The request has been successfully sent!",
         error: "An error occurred. Please try again later!",
         invalid: "Check the correctness of the data you entered!",
+        captcha: "Please complete the verification challenge!",
         sending: "Sending..."
     };
     const getMessage = (key) => MESSAGES[key];
 
     const validateInput = (input) => {
         const name = input.getAttribute('name');
-        if (name === 'website') return true; // Skip honeypot field
+        if (name === 'website') return true;
 
         const value = input.value.trim();
         let isValid = true;
@@ -25,6 +28,8 @@
             isValid = value.length >= 5 && value.length <= 80 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
         } else if (name === 'message') {
             isValid = value.length >= 2;
+        } else if (name === 'subject') {
+            isValid = value.length <= 100; // optional
         } else {
             isValid = value.length >= 1 && value.length <= 100;
         }
@@ -34,7 +39,6 @@
         return isValid;
     };
 
-    // Live validation (Skip honeypot)
     form.querySelectorAll('input:not([name="website"]), textarea').forEach(input => {
         input.addEventListener('input', () => validateInput(input));
     });
@@ -52,18 +56,16 @@
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // 1. Honeypot check
         const honeypot = form.querySelector("#website_hp").value;
         if (honeypot) {
-            showToast(getMessage('success'), 'success'); // Fake success
+            showToast(getMessage('success'), 'success');
             form.reset();
             return;
         }
 
         const submitBtn = form.querySelector(".submit-btn");
-        
+
         let isFormValid = true;
-        // Validate actual inputs only
         form.querySelectorAll('input:not([name="website"]), textarea').forEach(input => {
             if (!validateInput(input)) isFormValid = false;
         });
@@ -73,23 +75,35 @@
             return;
         }
 
+        const token = typeof turnstile !== 'undefined' ? turnstile.getResponse() : '';
+        if (!token) {
+            showToast(getMessage('captcha'), 'error');
+            return;
+        }
+
         submitBtn.classList.add("loading");
         submitBtn.disabled = true;
         const btnTextSpan = submitBtn.querySelector(".btn-send-text");
         const originalBtnText = btnTextSpan.innerText;
         btnTextSpan.innerText = getMessage('sending');
-        
-        emailjs.init({publicKey: "_GCxj9wp4lONoUvJG"});
 
         const formData = {
             name: (form.querySelector("input[name=name]")?.value || "").trim(),
             email: (form.querySelector("input[name=email]")?.value || "").trim(),
             subject: (form.querySelector("input[name=subject]")?.value || "").trim(),
-            message: (form.querySelector("[name=message]")?.value || "").trim()
-        };    
+            message: (form.querySelector("[name=message]")?.value || "").trim(),
+            website: honeypot,
+            startedAt: startedAtInput ? startedAtInput.value : 0,
+            token: token
+        };
 
-        emailjs.send("service_mmm1wzr", "template_04r4zio", formData)
-            .then(() => {
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+            .then((res) => {
+                if (!res.ok) throw new Error('send failed');
                 showToast(getMessage('success'), 'success');
                 form.reset();
                 form.querySelectorAll('input').forEach(i => i.disabled = true);
@@ -100,6 +114,7 @@
                 showToast(getMessage('error'), 'error');
                 submitBtn.disabled = false;
                 btnTextSpan.innerText = originalBtnText;
+                if (typeof turnstile !== 'undefined') turnstile.reset();
             })
             .finally(() => {
                 submitBtn.classList.remove("loading");
