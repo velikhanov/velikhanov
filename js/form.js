@@ -44,8 +44,6 @@
 
     const validateInput = (input) => {
         const name = input.getAttribute('name');
-        if (name === 'website') return true;
-
         const value = input.value.trim();
         let isValid = true;
 
@@ -64,7 +62,9 @@
         return isValid;
     };
 
-    form.querySelectorAll('input:not([name="website"])').forEach(input => {
+    const FORM_FIELDS_SELECTOR = 'input[name="name"], input[name="email"], input[name="subject"], input[name="message"]';
+
+    form.querySelectorAll(FORM_FIELDS_SELECTOR).forEach(input => {
         input.addEventListener('input', () => validateInput(input));
     });
 
@@ -91,7 +91,7 @@
         const submitBtn = form.querySelector(".submit-btn");
 
         let isFormValid = true;
-        form.querySelectorAll('input:not([name="website"])').forEach(input => {
+        form.querySelectorAll(FORM_FIELDS_SELECTOR).forEach(input => {
             if (!validateInput(input)) isFormValid = false;
         });
 
