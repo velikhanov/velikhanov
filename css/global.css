@@ -478,6 +478,11 @@ input.form-control:-moz-autofill {
 .form-control::placeholder { color: var(--secondary-text); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; }
 .form-control.error { border-bottom-color: #ff4444; }
 
+#turnstile-widget {
+  width: 100%;
+  min-height: 65px; /* reserve space so the async widget doesn't shift layout on load */
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;

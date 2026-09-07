@@ -8,6 +8,31 @@
     const startedAtInput = document.getElementById("started_at");
     if (startedAtInput) startedAtInput.value = Date.now();
 
+    // --- Turnstile: render explicitly so it matches the site's theme, ---
+    // --- and re-render (theme can't be changed on an existing widget) ---
+    // --- whenever the user toggles dark/light mode.                   ---
+    const turnstileEl = document.getElementById("turnstile-widget");
+    let turnstileWidgetId = null;
+
+    const currentSiteTheme = () => document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+
+    const renderTurnstile = () => {
+        if (!turnstileEl || typeof turnstile === 'undefined') return;
+        if (turnstileWidgetId !== null) turnstile.remove(turnstileWidgetId);
+        turnstileWidgetId = turnstile.render(turnstileEl, {
+            sitekey: turnstileEl.dataset.sitekey,
+            theme: currentSiteTheme(),
+            size: 'flexible'
+        });
+    };
+
+    window.onTurnstileLoad = renderTurnstile;
+
+    if (turnstileEl) {
+        new MutationObserver(() => renderTurnstile())
+            .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    }
+
     const MESSAGES = {
         success: "The request has been successfully sent!",
         error: "An error occurred. Please try again later!",
@@ -39,7 +64,7 @@
         return isValid;
     };
 
-    form.querySelectorAll('input:not([name="website"]), textarea').forEach(input => {
+    form.querySelectorAll('input:not([name="website"])').forEach(input => {
         input.addEventListener('input', () => validateInput(input));
     });
 
@@ -66,7 +91,7 @@
         const submitBtn = form.querySelector(".submit-btn");
 
         let isFormValid = true;
-        form.querySelectorAll('input:not([name="website"]), textarea').forEach(input => {
+        form.querySelectorAll('input:not([name="website"])').forEach(input => {
             if (!validateInput(input)) isFormValid = false;
         });
 
@@ -75,7 +100,7 @@
             return;
         }
 
-        const token = typeof turnstile !== 'undefined' ? turnstile.getResponse() : '';
+        const token = (typeof turnstile !== 'undefined' && turnstileWidgetId !== null) ? turnstile.getResponse(turnstileWidgetId) : '';
         if (!token) {
             showToast(getMessage('captcha'), 'error');
             return;
@@ -114,7 +139,7 @@
                 showToast(getMessage('error'), 'error');
                 submitBtn.disabled = false;
                 btnTextSpan.innerText = originalBtnText;
-                if (typeof turnstile !== 'undefined') turnstile.reset();
+                if (typeof turnstile !== 'undefined' && turnstileWidgetId !== null) turnstile.reset(turnstileWidgetId);
             })
             .finally(() => {
                 submitBtn.classList.remove("loading");

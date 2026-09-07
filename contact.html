@@ -18,11 +18,11 @@
 <link rel="shortcut icon" href="img/t.png" type="image/x-icon">
 <link rel="stylesheet" href="css/all.min.css?v=1720283222">
 <link rel="stylesheet" href="css/devicons.min.css?v=1775307131">
-<link rel="stylesheet" href="css/global.css?v=1788646399">
+<link rel="stylesheet" href="css/global.css?v=1788811216">
 <script src="js/scripts.js?v=1788646441"></script>
 <script src="js/lightning.js?v=1775322804" defer></script>    <meta name="format-detection" content="telephone=no">
     <title>Contact | Velikhanov Teymur</title>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit" async defer></script>
   </head>
   <body>
     <header class="main-header">
@@ -100,7 +100,7 @@
 
           <input type="hidden" id="started_at">
 
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEr6-rXOIs_2VXPY"></div>
+          <div id="turnstile-widget" data-sitekey="0x4AAAAAAEr6-rXOIs_2VXPY"></div>
           
           <button type="submit" class="btn btn-primary submit-btn">
             <span class="btn-send-text">Send Message</span>
@@ -119,6 +119,6 @@
       </div>
     </footer>
 
-    <script src="js/form.js?v=1788810852" defer></script>
+    <script src="js/form.js?v=1788811201" defer></script>
   </body>
 </html>
